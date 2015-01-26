@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/fillwords.js"></script>
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-2">
+        <input id="input_size" type="text" class="form-control" placeholder="type size of a field">
+        <button id="submit_size_button" type="button" class="btn btn-default">Generate game field!</button>
+    </div>
+</div>
+<div>
+    <div id="game_field">
+
+    </div>
+</div>
+</body>
+</html>

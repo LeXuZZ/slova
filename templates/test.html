@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+{#<link rel="stylesheet" type="text/css" href="static/css/test.css" media="screen"/>#}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/test.css') }}">
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="playarea"></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/fillwords.js') }}"></script>
+</body>
+</html>
