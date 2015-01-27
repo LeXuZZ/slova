@@ -10,18 +10,25 @@ class STATIC():
     GAME_DIMENSIONS = 5
 
 
+def get_cell_by_id(cell_id):
+    cell = smart_cell(int(cell_id[0]), int(cell_id[2]), 5) #hardcode
+    return cell
+
 def check_grid_for_ability_to_enter_3letter_words(grid):
-    all_empty_cells = []
+    empty_cell_list = []
     for row in grid:
         for cell in grid[row]:
-            if cell.letter == STATIC.EMPTY_CELL_LETTER:
-                if cell.up is None and cell.down is None and cell.left is None and cell.right is None:
-                    print 'cell with no move is {0}'.format(cell.id)
-                    return False
-                else:
-                    all_empty_cells.append(cell)
-
-    print [cell.id + ': {0}, {1}, {2}, {3}'.format(cell.up, cell.down, cell.left, cell.right) for cell in all_empty_cells]
+            if cell.letter == '0':
+                empty_cell_list.append(cell.id)
+                for neighbour in cell.get_neighbours():
+                    if neighbour != None:
+                        neihbour_cell = get_cell_by_id(str(neighbour))
+                        if neihbour_cell.letter == '0':
+                            empty_cell_list.append(neihbour_cell.id)
+    for i in empty_cell_list:
+        if empty_cell_list.count(i) > 2:
+            return True  #Yes, we can insert 3-letter word
+    return False         #No, we cant
 
 
 def add_word_to_grid():
@@ -38,6 +45,9 @@ class smart_cell():
         self.left = '{0}-{1}'.format(row, cell - 1) if cell != 0 else None
         self.right = '{0}-{1}'.format(row, cell + 1) if cell != game_dimensions - 1 else None
         pass
+
+    def get_neighbours(self):
+        return self.up, self.down, self.left, self.right
 
 
 def create_smart_grid(game_dimensions=STATIC.GAME_DIMENSIONS):
