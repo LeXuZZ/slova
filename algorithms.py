@@ -4,7 +4,7 @@ from addict import Dict
 __author__ = 'lxz'
 
 class STATIC():
-    WORDS = ['HELLO', 'BUNNY', 'ADDICT']
+    WORDS = ['HELLOWORLDHELLO', 'BUNNY', 'ADDICT']
     OUT_OF_GRID = 'OUT_OF_GRID'
     EMPTY_CELL_LETTER = '0'
     GAME_DIMENSIONS = 5
@@ -18,12 +18,12 @@ def check_grid_for_ability_to_enter_3letter_words(grid):
     empty_cell_list = []
     for row in grid:
         for cell in grid[row]:
-            if cell.letter == '0':
+            if cell.letter == STATIC.EMPTY_CELL_LETTER:
                 empty_cell_list.append(cell.id)
                 for neighbour in cell.get_neighbours():
                     if neighbour != None:
-                        neihbour_cell = get_cell_by_id(str(neighbour))
-                        if neihbour_cell.letter == '0':
+                        neihbour_cell = search_cell_in_grid(neighbour, grid)
+                        if neihbour_cell.letter == STATIC.EMPTY_CELL_LETTER:
                             empty_cell_list.append(neihbour_cell.id)
     for i in empty_cell_list:
         if empty_cell_list.count(i) > 2:

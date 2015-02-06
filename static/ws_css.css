@@ -1,0 +1,24 @@
+#input_cell_size {
+    position: relative;
+}
+
+#playarea {
+    margin: 10px auto;
+    position: relative;
+    border: 1px solid #525251;
+
+}
+
+.cell {
+    position: absolute;
+    /* display: inline-block;  */
+    /* background: #ccc;  */
+    margin: 0;
+    border: 1px solid #525251;
+}
+
+div span {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+}
